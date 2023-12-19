@@ -1,0 +1,94 @@
+[gd_scene load_steps=5 format=3 uid="uid://dtuy2mpd6ybky"]
+
+[ext_resource type="Script" path="res://interaction/popup_cowMenu.gd" id="1_7g76g"]
+[ext_resource type="Texture2D" uid="uid://c6qsqgr762nni" path="res://assets/UI/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Setting menu.png" id="1_074at"]
+[ext_resource type="Texture2D" uid="uid://dm3oppig10sca" path="res://assets/UI/Sprout Lands - UI Pack - Basic pack/Sprite sheets/buttons/Square Buttons 26x19.png" id="2_2xqug"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vbv04"]
+font_size = 6
+
+[node name="Control" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -25.0
+offset_right = 75.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7g76g")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+texture = ExtResource("1_074at")
+region_rect = Rect2(139, 12, 106, 122)
+
+[node name="Milk" type="Button" parent="VBoxContainer/NinePatchRect"]
+offset_left = 89.0
+offset_top = 19.0
+offset_right = 128.0
+offset_bottom = 34.0
+action_mode = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/NinePatchRect/Milk"]
+position = Vector2(20, 7)
+scale = Vector2(1.53846, 1)
+texture = ExtResource("2_2xqug")
+region_enabled = true
+region_rect = Rect2(59, 71, 26, 18)
+
+[node name="Label" type="Label" parent="VBoxContainer/NinePatchRect/Milk"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 2.0
+offset_right = 35.0
+offset_bottom = 11.0
+text = "Milk
+"
+label_settings = SubResource("LabelSettings_vbv04")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SetName" type="Button" parent="VBoxContainer/NinePatchRect"]
+layout_mode = 1
+offset_left = 20.0
+offset_top = 19.0
+offset_right = 59.0
+offset_bottom = 34.0
+action_mode = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/NinePatchRect/SetName"]
+position = Vector2(20, 7)
+scale = Vector2(1.53846, 1)
+texture = ExtResource("2_2xqug")
+region_enabled = true
+region_rect = Rect2(59, 71, 26, 18)
+
+[node name="Label" type="Label" parent="VBoxContainer/NinePatchRect/SetName"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 2.0
+offset_right = 35.0
+offset_bottom = 11.0
+text = "Set Name"
+label_settings = SubResource("LabelSettings_vbv04")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="VBoxContainer/NinePatchRect/Milk" to="." method="_on_milk_pressed"]
+[connection signal="pressed" from="VBoxContainer/NinePatchRect/SetName" to="." method="_on_set_name_pressed"]

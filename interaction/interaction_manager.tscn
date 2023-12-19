@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvjapeqilg63u"]
+
+[ext_resource type="Script" path="res://interaction/interaction_manager.gd" id="1_blg0u"]
+
+[node name="InteractionManager" type="Node2D"]
+script = ExtResource("1_blg0u")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -127.5
+offset_right = 127.5
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 8
+text = "Press Button or Space to Interact"
+horizontal_alignment = 1
+vertical_alignment = 1

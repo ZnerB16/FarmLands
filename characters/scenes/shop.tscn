@@ -1,0 +1,115 @@
+[gd_scene load_steps=6 format=3 uid="uid://2xc172p8f32b"]
+
+[ext_resource type="Texture2D" uid="uid://c6qsqgr762nni" path="res://assets/UI/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Setting menu.png" id="1_2e1vs"]
+[ext_resource type="Texture2D" uid="uid://dwb47y5pl4m7w" path="res://assets/UI/Sprout Lands - UI Pack - Basic pack/Sprite sheets/buttons/Square Buttons 26x26.png" id="2_wf317"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k7587"]
+atlas = ExtResource("1_2e1vs")
+region = Rect2(128, 0, 128, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yval5"]
+atlas = ExtResource("2_wf317")
+region = Rect2(59, 107, 26, 26)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gp1un"]
+texture = SubResource("AtlasTexture_yval5")
+
+[node name="Shop" type="CanvasLayer"]
+layer = 4
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -80.0
+offset_right = 120.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_k7587")
+
+[node name="Label" type="Label" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -12.5
+offset_top = 17.53
+offset_right = 12.5
+offset_bottom = 31.53
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 10
+text = "Shop"
+
+[node name="GridContainer" type="GridContainer" parent="TextureRect"]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 46.0
+offset_right = 195.0
+offset_bottom = 125.0
+theme_override_constants/h_separation = 25
+theme_override_constants/v_separation = 10
+columns = 4
+
+[node name="Slot1" type="Panel" parent="TextureRect/GridContainer"]
+custom_minimum_size = Vector2(18, 18)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_gp1un")
+
+[node name="Slot2" type="Panel" parent="TextureRect/GridContainer"]
+custom_minimum_size = Vector2(18, 18)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_gp1un")
+
+[node name="Slot3" type="Panel" parent="TextureRect/GridContainer"]
+custom_minimum_size = Vector2(18, 18)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_gp1un")
+
+[node name="Slot4" type="Panel" parent="TextureRect/GridContainer"]
+custom_minimum_size = Vector2(18, 18)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_gp1un")
+
+[node name="Slot5" type="Panel" parent="TextureRect/GridContainer"]
+custom_minimum_size = Vector2(18, 18)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_gp1un")
+
+[node name="Slot6" type="Panel" parent="TextureRect/GridContainer"]
+custom_minimum_size = Vector2(18, 18)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_gp1un")
+
+[node name="Slot7" type="Panel" parent="TextureRect/GridContainer"]
+custom_minimum_size = Vector2(18, 18)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_gp1un")
+
+[node name="Slot8" type="Panel" parent="TextureRect/GridContainer"]
+custom_minimum_size = Vector2(18, 18)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_gp1un")
+
+[node name="Slot9" type="Panel" parent="TextureRect/GridContainer"]
+custom_minimum_size = Vector2(18, 18)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_gp1un")
+
+[node name="Slot10" type="Panel" parent="TextureRect/GridContainer"]
+custom_minimum_size = Vector2(18, 18)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_gp1un")
+
+[node name="Slot11" type="Panel" parent="TextureRect/GridContainer"]
+custom_minimum_size = Vector2(18, 18)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_gp1un")
+
+[node name="Slot12" type="Panel" parent="TextureRect/GridContainer"]
+custom_minimum_size = Vector2(18, 18)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_gp1un")

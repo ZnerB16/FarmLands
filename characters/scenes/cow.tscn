@@ -1,0 +1,342 @@
+[gd_scene load_steps=33 format=3 uid="uid://1uupyrdtumhb"]
+
+[ext_resource type="Script" path="res://characters/scripts/cow.gd" id="1_0e7us"]
+[ext_resource type="Texture2D" uid="uid://ut5kivo2t4qr" path="res://assets/Characters/Free Cow Sprites.png" id="1_w3d4q"]
+[ext_resource type="PackedScene" uid="uid://r2wgj5k8vnqc" path="res://interaction/interaction_area/interaction_area.tscn" id="3_stjjm"]
+[ext_resource type="Script" path="res://characters/scripts/PopupMenu.gd" id="4_3r57e"]
+[ext_resource type="Texture2D" uid="uid://c6qsqgr762nni" path="res://assets/UI/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Setting menu.png" id="4_64jod"]
+[ext_resource type="Texture2D" uid="uid://dm3oppig10sca" path="res://assets/UI/Sprout Lands - UI Pack - Basic pack/Sprite sheets/buttons/Square Buttons 26x19.png" id="5_7ffgu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rp1ea"]
+size = Vector2(16, 7)
+
+[sub_resource type="Animation" id="Animation_lellj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CowSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_fcf4c"]
+resource_name = "idle"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CowSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_aprv1"]
+resource_name = "idle_flip"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CowSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_lq8cr"]
+resource_name = "walk"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CowSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [3, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3s8cs"]
+_data = {
+"RESET": SubResource("Animation_lellj"),
+"idle": SubResource("Animation_fcf4c"),
+"idle_flip": SubResource("Animation_aprv1"),
+"walk": SubResource("Animation_lq8cr")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dwxih"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pn5ww"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ib7k7"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rdwwu"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_trevm"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_dwxih")
+blend_point_0/pos = Vector2(0, 1.1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_pn5ww")
+blend_point_1/pos = Vector2(0, -1.1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_ib7k7")
+blend_point_2/pos = Vector2(1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_rdwwu")
+blend_point_3/pos = Vector2(-1, 0)
+min_space = Vector2(-1, -1.1)
+max_space = Vector2(1, 1.1)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4j6d7"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7i0wm"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_n0a5j"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_04w8u"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_4flom"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_4j6d7")
+blend_point_0/pos = Vector2(0, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_7i0wm")
+blend_point_1/pos = Vector2(0, -1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_n0a5j")
+blend_point_2/pos = Vector2(1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_04w8u")
+blend_point_3/pos = Vector2(-1, 0)
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fhrsd"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3e84c"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tl03u"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ce747"]
+states/Idle/node = SubResource("AnimationNodeBlendSpace2D_trevm")
+states/Idle/position = Vector2(325, 100)
+states/Walk/node = SubResource("AnimationNodeBlendSpace2D_4flom")
+states/Walk/position = Vector2(473, 100)
+transitions = ["Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_fhrsd"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_3e84c"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_tl03u")]
+graph_offset = Vector2(-244.117, -52.377)
+
+[sub_resource type="LabelSettings" id="LabelSettings_s2bmc"]
+font_size = 6
+outline_size = 1
+outline_color = Color(0.705882, 0.345098, 0.662745, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uxbdr"]
+size = Vector2(44, 28)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ob28d"]
+font_size = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wk03s"]
+bg_color = Color(0.894118, 0.619608, 0.388235, 1)
+
+[sub_resource type="Theme" id="Theme_r1lo4"]
+PopupDialog/styles/Background = SubResource("StyleBoxFlat_wk03s")
+
+[sub_resource type="LabelSettings" id="LabelSettings_ewmkr"]
+font_size = 12
+font_color = Color(1, 1, 0.709804, 1)
+
+[node name="Cow" type="CharacterBody2D"]
+y_sort_enabled = true
+texture_filter = 1
+script = ExtResource("1_0e7us")
+
+[node name="CowSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_w3d4q")
+hframes = 3
+vframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 9.5)
+shape = SubResource("RectangleShape2D_rp1ea")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3s8cs")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3s8cs")
+}
+tree_root = SubResource("AnimationNodeStateMachine_ce747")
+anim_player = NodePath("../AnimationPlayer")
+parameters/Idle/blend_position = Vector2(0, 0)
+parameters/Walk/blend_position = Vector2(0, 0)
+
+[node name="AnimationTimer" type="Timer" parent="."]
+
+[node name="Label" type="Label" parent="."]
+z_index = 5
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.545
+offset_left = -6.5
+offset_top = -10.0
+offset_right = 6.5
+grow_horizontal = 2
+text = "Cow"
+label_settings = SubResource("LabelSettings_s2bmc")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InteractionArea" parent="." instance=ExtResource("3_stjjm")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(-1, 4)
+shape = SubResource("RectangleShape2D_uxbdr")
+
+[node name="PopupMenu" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+script = ExtResource("4_3r57e")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="PopupMenu"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+texture = ExtResource("4_64jod")
+region_rect = Rect2(139, 12, 106, 122)
+
+[node name="Milk" type="Button" parent="PopupMenu/NinePatchRect"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 17.0
+offset_right = 45.0
+offset_bottom = 32.0
+action_mode = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="PopupMenu/NinePatchRect/Milk"]
+position = Vector2(20, 7)
+scale = Vector2(1.53846, 1)
+texture = ExtResource("5_7ffgu")
+region_enabled = true
+region_rect = Rect2(59, 71, 26, 18)
+
+[node name="Label" type="Label" parent="PopupMenu/NinePatchRect/Milk"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 2.0
+offset_right = 35.0
+offset_bottom = 11.0
+text = "Milk
+"
+label_settings = SubResource("LabelSettings_ob28d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SetName" type="Button" parent="PopupMenu/NinePatchRect"]
+layout_mode = 1
+offset_left = -46.0
+offset_top = 17.0
+offset_right = -7.0
+offset_bottom = 32.0
+action_mode = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="PopupMenu/NinePatchRect/SetName"]
+position = Vector2(20, 7)
+scale = Vector2(1.53846, 1)
+texture = ExtResource("5_7ffgu")
+region_enabled = true
+region_rect = Rect2(59, 71, 26, 18)
+
+[node name="Label" type="Label" parent="PopupMenu/NinePatchRect/SetName"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 2.0
+offset_right = 35.0
+offset_bottom = 11.0
+text = "Set Name"
+label_settings = SubResource("LabelSettings_ob28d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Popup" type="Popup" parent="."]
+disable_3d = true
+initial_position = 2
+size = Vector2i(200, 100)
+visible = true
+unresizable = false
+theme = SubResource("Theme_r1lo4")
+
+[node name="LineEdit" type="LineEdit" parent="Popup"]
+texture_filter = 1
+custom_minimum_size = Vector2(150, 50)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -25.0
+offset_right = 75.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+placeholder_text = "Example: Eskini"
+alignment = 1
+
+[node name="Label" type="Label" parent="Popup"]
+texture_filter = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -48.5
+offset_right = 48.5
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Enter Name:"
+label_settings = SubResource("LabelSettings_ewmkr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EconTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="AnimationTimer" to="." method="_on_timer_timeout"]
+[connection signal="body_shape_entered" from="InteractionArea" to="." method="_on_interaction_area_body_shape_entered"]
+[connection signal="body_shape_exited" from="InteractionArea" to="." method="_on_interaction_area_body_shape_exited"]
+[connection signal="pressed" from="PopupMenu/NinePatchRect/Milk" to="." method="_on_milk_pressed"]
+[connection signal="pressed" from="PopupMenu/NinePatchRect/SetName" to="." method="_on_set_name_pressed"]
+[connection signal="ready" from="Popup/LineEdit" to="." method="_on_line_edit_ready"]
+[connection signal="text_changed" from="Popup/LineEdit" to="." method="_on_line_edit_text_changed"]
+[connection signal="text_submitted" from="Popup/LineEdit" to="." method="_on_line_edit_text_submitted"]
+[connection signal="timeout" from="EconTimer" to="." method="_on_econ_timer_timeout"]

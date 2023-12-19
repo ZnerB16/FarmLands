@@ -1,0 +1,82 @@
+[gd_scene load_steps=4 format=3 uid="uid://b42ak27nstkuk"]
+
+[ext_resource type="Texture2D" uid="uid://gb2spkr7fydt" path="res://assets/UI/Sprout Lands - UI Pack - Basic pack/Sprite sheets/UI Big Play Button.png" id="1_rmiba"]
+[ext_resource type="Texture2D" uid="uid://bvm8ukynkkybu" path="res://assets/Characters/Tools.png" id="2_fg7mu"]
+[ext_resource type="Texture2D" uid="uid://b53ka2u3ggxwu" path="res://assets/Characters/tool_water.png" id="3_7aqsr"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+modulate = Color(1, 1, 1, 0.784314)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -52.0
+offset_top = -28.0
+offset_right = 52.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("1_rmiba")
+region_rect = Rect2(3, 2, 90, 27)
+
+[node name="AxeButton" type="Button" parent="NinePatchRect" groups=["PlayerMenu"]]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 2.0
+offset_right = 21.0
+offset_bottom = 15.0
+focus_mode = 1
+action_mode = 0
+
+[node name="Axe" type="Sprite2D" parent="NinePatchRect/AxeButton"]
+position = Vector2(6.99999, 7.00001)
+scale = Vector2(1.20833, 1.1875)
+texture = ExtResource("2_fg7mu")
+region_enabled = true
+region_rect = Rect2(18, 35, 9, 8)
+metadata/_edit_lock_ = true
+
+[node name="HoeButton" type="Button" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 2.0
+offset_right = 40.0
+offset_bottom = 15.0
+
+[node name="Hoe" type="Sprite2D" parent="NinePatchRect/HoeButton"]
+position = Vector2(6.93746, 6.75003)
+scale = Vector2(1.34722, 1.58333)
+texture = ExtResource("2_fg7mu")
+region_enabled = true
+region_rect = Rect2(18, 67, 9, 6)
+metadata/_edit_lock_ = true
+
+[node name="WaterButton" type="Button" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 2.0
+offset_right = 59.0
+offset_bottom = 15.0
+
+[node name="Water" type="Sprite2D" parent="NinePatchRect/WaterButton"]
+position = Vector2(7, 6.99998)
+scale = Vector2(0.835937, 0.968752)
+texture = ExtResource("3_7aqsr")
+metadata/_edit_lock_ = true
+
+[node name="Button4" type="Button" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 2.0
+offset_right = 78.0
+offset_bottom = 15.0
+
+[node name="Button5" type="Button" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 83.0
+offset_top = 2.0
+offset_right = 97.0
+offset_bottom = 15.0
