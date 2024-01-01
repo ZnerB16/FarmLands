@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://drf1jjxvn14xs"]
+[gd_scene load_steps=28 format=3 uid="uid://drf1jjxvn14xs"]
 
 [ext_resource type="PackedScene" uid="uid://dujl1kyumxx15" path="res://characters/scenes/player_chibs.tscn" id="1_22me4"]
 [ext_resource type="Script" path="res://levels/main.gd" id="1_ldx3k"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://bwphaniitoue7" path="res://assets/Tilesets/Grass.png" id="2_wrgwu"]
 [ext_resource type="Texture2D" uid="uid://bnri2iyjievew" path="res://assets/Tilesets/Water.png" id="3_a53o0"]
 [ext_resource type="Texture2D" uid="uid://cabaqco2d1h4k" path="res://assets/Tilesets/Tilled Dirt.png" id="4_e6f5v"]
-[ext_resource type="PackedScene" uid="uid://bqbxm1gar7ipy" path="res://characters/scenes/enemy.tscn" id="4_x1835"]
 [ext_resource type="Texture2D" uid="uid://v7q11d6lql4d" path="res://assets/Tilesets/Wooden House.png" id="5_qfssu"]
 [ext_resource type="Texture2D" uid="uid://bhtrkk5sbmtb7" path="res://assets/Tilesets/Fences.png" id="6_rxrr2"]
 [ext_resource type="PackedScene" uid="uid://1uupyrdtumhb" path="res://characters/scenes/cow.tscn" id="8_mty1o"]
@@ -769,9 +768,6 @@ script = ExtResource("1_ldx3k")
 position = Vector2(238, 151)
 inventoryData = ExtResource("2_ppiog")
 
-[node name="Enemy" parent="." instance=ExtResource("4_x1835")]
-position = Vector2(132, 269)
-
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_8l4bc")
 format = 2
@@ -810,39 +806,31 @@ position = Vector2(289, 220)
 [node name="Tree2" parent="." instance=ExtResource("9_mn15i")]
 position = Vector2(428, 23)
 
-[node name="InventoryCanvas" type="CanvasLayer" parent="."]
-
-[node name="InventoryInterface" type="Control" parent="InventoryCanvas"]
+[node name="InventoryInterface" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 script = ExtResource("15_ip3aj")
 
-[node name="GrabbedSlot" parent="InventoryCanvas/InventoryInterface" instance=ExtResource("17_isd06")]
+[node name="Inventory" parent="InventoryInterface" instance=ExtResource("15_uoaf1")]
+layer = 1
+visible = false
+
+[node name="GrabbedSlot" parent="." instance=ExtResource("17_isd06")]
 visible = false
 modulate = Color(1, 1, 1, 0.498039)
 self_modulate = Color(1, 1, 1, 0)
 top_level = true
 custom_minimum_size = Vector2(16, 16)
-layout_mode = 0
 
-[node name="Inventory" parent="InventoryCanvas/InventoryInterface" instance=ExtResource("15_uoaf1")]
-visible = false
-layout_mode = 1
-
-[node name="Economy" parent="." instance=ExtResource("11_bdsf1")]
-layer = 2
+[node name="CanvasLayer" parent="." instance=ExtResource("11_bdsf1")]
 
 [node name="MobileControls" parent="." instance=ExtResource("14_2xofi")]
-layer = 2
 
 [node name="PlayerMenu" parent="." instance=ExtResource("16_fylt4")]
-layer = 2
 
-[node name="Shop" parent="." instance=ExtResource("12_y3nip")]
+[node name="Node2D" parent="." instance=ExtResource("12_y3nip")]
 position = Vector2(376, 5)
 
 [node name="BasicPlants" type="Sprite2D" parent="."]
@@ -914,8 +902,3 @@ scale = Vector2(0.656249, 0.6875)
 texture = ExtResource("13_5ukxk")
 region_enabled = true
 region_rect = Rect2(64, 16, 16, 16)
-
-[node name="AnimationTimer" type="Timer" parent="."]
-wait_time = 0.3
-
-[connection signal="timeout" from="AnimationTimer" to="." method="_on_animation_timer_timeout"]

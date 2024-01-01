@@ -4,9 +4,9 @@ class_name Cow
 
 enum COW_STATE { IDLE, WALK }
 
-@export var speed: float = 25.0 
-@export var idleTime: float = randf_range(0, 5)
-@export var walkTime: float = randf_range(0, 3)
+@export var speed: float = 15.0 
+@export var idleTime: float = randf_range(2, 5)
+@export var walkTime: float = randf_range(1, 3)
 
 @onready var interactionArea = $InteractionArea
 @onready var sprite = $CowSprite
@@ -17,6 +17,8 @@ enum COW_STATE { IDLE, WALK }
 @onready var popupMenu = $PopupMenu
 @onready var label = $Label
 @onready var lineEdit = $Popup/LineEdit
+@onready var milk = $PopupMenu/NinePatchRect/Milk
+@onready var set_name_cow = $PopupMenu/NinePatchRect/SetName
 
 var canInteract = false
 var direction: Vector2 = Vector2.ZERO
@@ -27,20 +29,21 @@ func _ready():
 	interactionArea.interact = Callable(self, "_changeName")
 	popup.visible = false
 	popupMenu.visible = false
+	milk.disabled = false
+	set_name_cow.disabled = false
 
 func _physics_process(_delta):
 	if(currState == COW_STATE.WALK):
 		velocity = direction * speed
 		move_and_slide()
-		
+	
 	if(popupMenu.visible == false):
 		canInteract = false
 	else:
-		currState = COW_STATE.WALK
+		currState = COW_STATE.IDLE
 		direction = Vector2.ZERO
 	
 	updateAnimation(direction)
-	
 
 func selectNewDir():
 	direction = Vector2(
@@ -73,12 +76,11 @@ func _changeName():
 	if (Input.is_action_pressed("interact")):
 		popupMenu.visible = true
 		canInteract = true
-	
-func _showInput():
-	popup.visible = true
 
 func _on_timer_timeout():
 	pickNewState()
+	idleTime = randf_range(2, 5)
+	walkTime = randf_range(1, 3)
 
 func _on_line_edit_text_submitted(new_text):
 	popup.visible = false
@@ -90,7 +92,7 @@ func _on_milk_pressed():
 	pass # Replace with function body.
 
 func _on_set_name_pressed():
-	_showInput()
+	popup.visible = true
 
 func _on_interaction_area_body_shape_exited(_body_rid, _body, _body_shape_index, _local_shape_index):
 	popupMenu.visible = false

@@ -7,12 +7,12 @@
 atlas = ExtResource("1_2e1vs")
 region = Rect2(128, 0, 128, 144)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yval5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_i86cl"]
 atlas = ExtResource("2_wf317")
 region = Rect2(59, 107, 26, 26)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gp1un"]
-texture = SubResource("AtlasTexture_yval5")
+texture = SubResource("AtlasTexture_i86cl")
 
 [node name="Shop" type="CanvasLayer"]
 layer = 4

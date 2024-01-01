@@ -1,6 +1,7 @@
-extends Resource
-class_name Item
+extends Node2D
 
-@export var name: String = ""
-@export var texture: Texture
-
+func _ready():
+	if randi() % 2:
+		$TextureRect.texture = load("res://assets/Objects/Egg item.png")
+	else: 
+		$TextureRect.texture = load("res://assets/Objects/Free_Chicken_House.png")

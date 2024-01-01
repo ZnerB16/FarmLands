@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://75hsxusm0bbu"]
 
 [ext_resource type="Texture2D" uid="uid://ccxpkupp3510s" path="res://assets/Objects/Egg item.png" id="1_gmaar"]
-[ext_resource type="Script" path="res://characters/scenes/egg.gd" id="1_wcgcr"]
+[ext_resource type="Script" path="res://characters/scripts/egg.gd" id="1_wek11"]
 [ext_resource type="PackedScene" uid="uid://r2wgj5k8vnqc" path="res://interaction/interaction_area/interaction_area.tscn" id="2_xm74n"]
 [ext_resource type="PackedScene" uid="uid://2xc172p8f32b" path="res://characters/scenes/shop.tscn" id="4_jqbx2"]
 
@@ -11,8 +11,8 @@ size = Vector2(10, 11)
 [sub_resource type="CircleShape2D" id="CircleShape2D_c5fkh"]
 radius = 19.0263
 
-[node name="Node2D" type="Node2D"]
-script = ExtResource("1_wcgcr")
+[node name="Shop" type="Node2D"]
+script = ExtResource("1_wek11")
 
 [node name="Egg" type="Sprite2D" parent="."]
 texture = ExtResource("1_gmaar")

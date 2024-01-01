@@ -156,11 +156,11 @@ size = Vector2(44, 28)
 [sub_resource type="LabelSettings" id="LabelSettings_ob28d"]
 font_size = 6
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wk03s"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oxkot"]
 bg_color = Color(0.894118, 0.619608, 0.388235, 1)
 
 [sub_resource type="Theme" id="Theme_r1lo4"]
-PopupDialog/styles/Background = SubResource("StyleBoxFlat_wk03s")
+PopupDialog/styles/Background = SubResource("StyleBoxFlat_oxkot")
 
 [sub_resource type="LabelSettings" id="LabelSettings_ewmkr"]
 font_size = 12

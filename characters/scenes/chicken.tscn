@@ -1,7 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://dppe8evqxp5q4"]
+[gd_scene load_steps=32 format=3 uid="uid://dppe8evqxp5q4"]
 
 [ext_resource type="Texture2D" uid="uid://b7ej1mhi3c8nd" path="res://assets/Characters/Free Chicken Sprites.png" id="1_1cndy"]
 [ext_resource type="Script" path="res://characters/scripts/chicken.gd" id="1_d6220"]
+[ext_resource type="Texture2D" uid="uid://c6qsqgr762nni" path="res://assets/UI/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Setting menu.png" id="4_q1bc0"]
+[ext_resource type="Texture2D" uid="uid://dm3oppig10sca" path="res://assets/UI/Sprout Lands - UI Pack - Basic pack/Sprite sheets/buttons/Square Buttons 26x19.png" id="5_555cn"]
+[ext_resource type="PackedScene" uid="uid://r2wgj5k8vnqc" path="res://interaction/interaction_area/interaction_area.tscn" id="6_wfhah"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_21thq"]
 size = Vector2(9, 6)
@@ -127,6 +130,33 @@ states/Walk/node = SubResource("AnimationNodeBlendSpace2D_tglur")
 states/Walk/position = Vector2(456, 88)
 transitions = ["Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_fhh4u"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_l4wch"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_ak0hb")]
 
+[sub_resource type="Theme" id="Theme_umgt1"]
+Label/colors/font_color = Color(1, 1, 0.764706, 1)
+Label/colors/font_outline_color = Color(0.756863, 0.309804, 0.658824, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_as3n4"]
+font_size = 6
+font_color = Color(1, 1, 0.345098, 1)
+outline_size = 1
+outline_color = Color(0.788235, 0.501961, 0.458824, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_nwwxg"]
+font_size = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wk03s"]
+bg_color = Color(0.894118, 0.619608, 0.388235, 1)
+
+[sub_resource type="Theme" id="Theme_4cd5m"]
+PopupDialog/styles/Background = SubResource("StyleBoxFlat_wk03s")
+
+[sub_resource type="LabelSettings" id="LabelSettings_ru6e2"]
+font_size = 12
+font_color = Color(1, 1, 0.709804, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o0jj6"]
+size = Vector2(22, 20)
+
 [node name="Chicken" type="CharacterBody2D"]
 z_as_relative = false
 y_sort_enabled = true
@@ -163,5 +193,144 @@ parameters/Walk/blend_position = Vector2(-0.000871837, 1.08836)
 wait_time = 3.0
 autostart = true
 
+[node name="Label" type="Label" parent="."]
+z_index = 5
+texture_filter = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -12.0
+offset_top = -14.0
+offset_right = 12.0
+offset_bottom = -5.0
+grow_horizontal = 2
+theme = SubResource("Theme_umgt1")
+theme_override_colors/font_outline_color = Color(0.92549, 0.67451, 0.827451, 1)
+theme_override_font_sizes/font_size = 6
+text = "Chicken"
+label_settings = SubResource("LabelSettings_as3n4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PopupMenu" type="VBoxContainer" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="PopupMenu"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+texture = ExtResource("4_q1bc0")
+region_rect = Rect2(139, 12, 106, 122)
+
+[node name="Unknown" type="Button" parent="PopupMenu/NinePatchRect"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 17.0
+offset_right = 45.0
+offset_bottom = 32.0
+action_mode = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="PopupMenu/NinePatchRect/Unknown"]
+position = Vector2(20, 7)
+scale = Vector2(1.53846, 1)
+texture = ExtResource("5_555cn")
+region_enabled = true
+region_rect = Rect2(59, 71, 26, 18)
+
+[node name="Label" type="Label" parent="PopupMenu/NinePatchRect/Unknown"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 2.0
+offset_right = 35.0
+offset_bottom = 11.0
+text = "Unknown
+"
+label_settings = SubResource("LabelSettings_nwwxg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SetName" type="Button" parent="PopupMenu/NinePatchRect"]
+layout_mode = 1
+offset_left = -46.0
+offset_top = 17.0
+offset_right = -7.0
+offset_bottom = 32.0
+action_mode = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="PopupMenu/NinePatchRect/SetName"]
+position = Vector2(20, 7)
+scale = Vector2(1.53846, 1)
+texture = ExtResource("5_555cn")
+region_enabled = true
+region_rect = Rect2(59, 71, 26, 18)
+
+[node name="Label" type="Label" parent="PopupMenu/NinePatchRect/SetName"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 2.0
+offset_right = 35.0
+offset_bottom = 11.0
+text = "Set Name"
+label_settings = SubResource("LabelSettings_nwwxg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Popup" type="Popup" parent="."]
+disable_3d = true
+initial_position = 2
+size = Vector2i(200, 100)
+unresizable = false
+theme = SubResource("Theme_4cd5m")
+
+[node name="LineEdit" type="LineEdit" parent="Popup"]
+texture_filter = 1
+custom_minimum_size = Vector2(150, 50)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -25.0
+offset_right = 75.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+placeholder_text = "Example: Eskini"
+alignment = 1
+
+[node name="Label" type="Label" parent="Popup"]
+texture_filter = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -48.5
+offset_right = 48.5
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Enter Name:"
+label_settings = SubResource("LabelSettings_ru6e2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InteractionArea" parent="." instance=ExtResource("6_wfhah")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_o0jj6")
+
 [connection signal="timeout" from="AnimationTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="EconTimer" to="." method="_on_econ_timer_timeout"]
+[connection signal="pressed" from="PopupMenu/NinePatchRect/Unknown" to="." method="_on_milk_pressed"]
+[connection signal="pressed" from="PopupMenu/NinePatchRect/SetName" to="." method="_on_set_name_pressed"]
+[connection signal="text_changed" from="Popup/LineEdit" to="." method="_on_line_edit_text_changed"]
+[connection signal="text_submitted" from="Popup/LineEdit" to="." method="_on_line_edit_text_submitted"]
+[connection signal="body_exited" from="InteractionArea" to="." method="_on_interaction_area_body_exited"]

@@ -1,0 +1,218 @@
+[gd_scene load_steps=10 format=3 uid="uid://bqbxm1gar7ipy"]
+
+[ext_resource type="Shader" uid="uid://cps74iuwisk4v" path="res://characters/scenes/enemy.tres" id="1_5ce73"]
+[ext_resource type="Script" path="res://characters/scripts/enemy.gd" id="1_5vrwc"]
+[ext_resource type="Texture2D" uid="uid://dpv6ae8fb80dt" path="res://assets/Characters/enemy.png" id="2_bb3lx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h1yvq"]
+resource_local_to_scene = true
+shader = ExtResource("1_5ce73")
+shader_parameter/enabled = false
+shader_parameter/tint = Color(1, 1, 1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ri4et"]
+size = Vector2(14, 14)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1pbx0"]
+radius = 19.0263
+
+[sub_resource type="Animation" id="Animation_11xwf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_0gv23"]
+resource_name = "hit_flash"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0995443, 0.198693),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eunjf"]
+_data = {
+"RESET": SubResource("Animation_11xwf"),
+"hit_flash": SubResource("Animation_0gv23")
+}
+
+[node name="Enemy" type="CharacterBody2D"]
+y_sort_enabled = true
+script = ExtResource("1_5vrwc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_h1yvq")
+texture = ExtResource("2_bb3lx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ri4et")
+
+[node name="DetectWall1" type="RayCast2D" parent="."]
+target_position = Vector2(0, 55)
+
+[node name="DetectWall9" type="RayCast2D" parent="."]
+target_position = Vector2(9, 54)
+
+[node name="DetectWall10" type="RayCast2D" parent="."]
+target_position = Vector2(17, 52)
+
+[node name="DetectWall11" type="RayCast2D" parent="."]
+target_position = Vector2(25, 49)
+
+[node name="DetectWall12" type="RayCast2D" parent="."]
+target_position = Vector2(33, 44)
+
+[node name="DetectWall2" type="RayCast2D" parent="."]
+target_position = Vector2(-38, 39)
+
+[node name="DetectWall14" type="RayCast2D" parent="."]
+target_position = Vector2(-32, 44)
+
+[node name="DetectWall15" type="RayCast2D" parent="."]
+target_position = Vector2(-25, 49)
+
+[node name="DetectWall16" type="RayCast2D" parent="."]
+target_position = Vector2(-17, 52)
+
+[node name="DetectWall17" type="RayCast2D" parent="."]
+target_position = Vector2(-9, 54)
+
+[node name="DetectWall19" type="RayCast2D" parent="."]
+target_position = Vector2(-44, 33)
+
+[node name="DetectWall20" type="RayCast2D" parent="."]
+target_position = Vector2(-48, 25)
+
+[node name="DetectWall21" type="RayCast2D" parent="."]
+target_position = Vector2(-52, 17)
+
+[node name="DetectWall22" type="RayCast2D" parent="."]
+target_position = Vector2(-54, 8)
+
+[node name="DetectWall3" type="RayCast2D" parent="."]
+target_position = Vector2(39, 38)
+
+[node name="DetectWall13" type="RayCast2D" parent="."]
+target_position = Vector2(44, 32)
+
+[node name="DetectWall18" type="RayCast2D" parent="."]
+target_position = Vector2(49, 24)
+
+[node name="DetectWall23" type="RayCast2D" parent="."]
+target_position = Vector2(52, 16)
+
+[node name="DetectWall24" type="RayCast2D" parent="."]
+target_position = Vector2(54, 8)
+
+[node name="DetectWall4" type="RayCast2D" parent="."]
+target_position = Vector2(54, 0)
+
+[node name="DetectWall25" type="RayCast2D" parent="."]
+target_position = Vector2(54, -9)
+
+[node name="DetectWall26" type="RayCast2D" parent="."]
+target_position = Vector2(52, -18)
+
+[node name="DetectWall27" type="RayCast2D" parent="."]
+target_position = Vector2(49, -26)
+
+[node name="DetectWall28" type="RayCast2D" parent="."]
+target_position = Vector2(45, -33)
+
+[node name="DetectWall5" type="RayCast2D" parent="."]
+target_position = Vector2(-55, 0)
+
+[node name="DetectWall29" type="RayCast2D" parent="."]
+target_position = Vector2(-54, -9)
+
+[node name="DetectWall30" type="RayCast2D" parent="."]
+target_position = Vector2(-52, -17)
+
+[node name="DetectWall31" type="RayCast2D" parent="."]
+target_position = Vector2(-49, -26)
+
+[node name="DetectWall32" type="RayCast2D" parent="."]
+target_position = Vector2(-45, -33)
+
+[node name="DetectWall6" type="RayCast2D" parent="."]
+target_position = Vector2(-40, -40)
+
+[node name="DetectWall33" type="RayCast2D" parent="."]
+target_position = Vector2(-33, -44)
+
+[node name="DetectWall34" type="RayCast2D" parent="."]
+target_position = Vector2(-26, -49)
+
+[node name="DetectWall35" type="RayCast2D" parent="."]
+target_position = Vector2(-17, -53)
+
+[node name="DetectWall36" type="RayCast2D" parent="."]
+target_position = Vector2(-9, -55)
+
+[node name="DetectWall7" type="RayCast2D" parent="."]
+target_position = Vector2(38, -39)
+
+[node name="DetectWall37" type="RayCast2D" parent="."]
+target_position = Vector2(32, -45)
+
+[node name="DetectWall38" type="RayCast2D" parent="."]
+target_position = Vector2(25, -50)
+
+[node name="DetectWall39" type="RayCast2D" parent="."]
+target_position = Vector2(17, -53)
+
+[node name="DetectWall40" type="RayCast2D" parent="."]
+target_position = Vector2(9, -55)
+
+[node name="DetectWall8" type="RayCast2D" parent="."]
+target_position = Vector2(0, -55)
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_1pbx0")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.7
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_eunjf")
+}
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -10.0
+offset_top = -20.0
+offset_right = 10.0
+offset_bottom = -8.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.996078, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 6
+text = "Angry Dude"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

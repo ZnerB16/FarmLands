@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccqochm3cil7a"]
+
+[ext_resource type="Texture2D" uid="uid://bbwursga6rxjh" path="res://assets/Objects/Basic Plants.png" id="2_1kd48"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_62ka1"]
+atlas = ExtResource("2_1kd48")
+region = Rect2(2, 2, 12, 13)
+
+[node name="Item" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("AtlasTexture_62ka1")

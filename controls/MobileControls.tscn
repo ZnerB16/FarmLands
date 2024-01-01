@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://jecsrybc13tb"]
+[gd_scene load_steps=10 format=3 uid="uid://jecsrybc13tb"]
 
 [ext_resource type="Texture2D" uid="uid://bw2mt3j4qkv0l" path="res://assets/UI/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="1_rso5i"]
 [ext_resource type="Texture2D" uid="uid://debluut2o3xmv" path="res://assets/UI/Sprout Lands - UI Pack - Basic pack/Sprite sheets/buttons/Small Square Buttons.png" id="2_51d7s"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kjkfc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k381k"]
 size = Vector2(9, 9.335)
@@ -15,33 +17,44 @@ size = Vector2(20.47, 31.06)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v8g66"]
 size = Vector2(23.48, 32.425)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1r151"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mqy0u"]
 size = Vector2(27.425, 27.54)
 
 [node name="MobileControls" type="CanvasLayer"]
 
-[node name="Up" type="TouchScreenButton" parent="."]
-position = Vector2(52, 147)
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -83.0
+offset_right = 83.0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_kjkfc")
+
+[node name="Up" type="TouchScreenButton" parent="Panel"]
+position = Vector2(43, 17)
 scale = Vector2(1.93478, 2.03595)
 shape = SubResource("RectangleShape2D_k381k")
 passby_press = true
 action = "up"
 
-[node name="Sprite2D" type="Sprite2D" parent="Up"]
+[node name="Sprite2D" type="Sprite2D" parent="Panel/Up"]
 modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(4.76837e-07, -2.92063e-06)
 texture = ExtResource("1_rso5i")
 region_enabled = true
 region_rect = Rect2(272, 32, 16, 16)
 
-[node name="Down" type="TouchScreenButton" parent="."]
-position = Vector2(53, 191)
+[node name="Down" type="TouchScreenButton" parent="Panel"]
+position = Vector2(44, 61)
 scale = Vector2(0.696969, 0.675)
 shape = SubResource("RectangleShape2D_kvxqu")
 passby_press = true
 action = "down"
 
-[node name="Sprite2D" type="Sprite2D" parent="Down"]
+[node name="Sprite2D" type="Sprite2D" parent="Panel/Down"]
 modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(-1.43051e-06, 1.52588e-05)
 scale = Vector2(3, 2.90625)
@@ -49,14 +62,14 @@ texture = ExtResource("1_rso5i")
 region_enabled = true
 region_rect = Rect2(272, 48, 16, 16)
 
-[node name="Left" type="TouchScreenButton" parent="."]
-position = Vector2(30, 169)
+[node name="Left" type="TouchScreenButton" parent="Panel"]
+position = Vector2(21, 39)
 scale = Vector2(0.7, 0.674419)
 shape = SubResource("RectangleShape2D_7fsl6")
 passby_press = true
 action = "left"
 
-[node name="Sprite2D" type="Sprite2D" parent="Left"]
+[node name="Sprite2D" type="Sprite2D" parent="Panel/Left"]
 modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(7.62939e-06, 6.67572e-06)
 scale = Vector2(3.03125, 2.6875)
@@ -64,14 +77,14 @@ texture = ExtResource("1_rso5i")
 region_enabled = true
 region_rect = Rect2(272, 16, 16, 16)
 
-[node name="Right" type="TouchScreenButton" parent="."]
-position = Vector2(76, 170)
+[node name="Right" type="TouchScreenButton" parent="Panel"]
+position = Vector2(67, 40)
 scale = Vector2(0.64, 0.66)
 shape = SubResource("RectangleShape2D_v8g66")
 passby_press = true
 action = "right"
 
-[node name="Sprite2D" type="Sprite2D" parent="Right"]
+[node name="Sprite2D" type="Sprite2D" parent="Panel/Right"]
 modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(3.8147e-06, -3.8147e-06)
 scale = Vector2(3.26562, 2.78125)
@@ -79,12 +92,24 @@ texture = ExtResource("1_rso5i")
 region_enabled = true
 region_rect = Rect2(272, 0, 16, 16)
 
-[node name="Interact" type="TouchScreenButton" parent="."]
-position = Vector2(311, 170)
+[node name="Panel2" type="Panel" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_1r151")
+
+[node name="Interact" type="TouchScreenButton" parent="Panel2"]
+position = Vector2(-6.48, 1)
 shape = SubResource("RectangleShape2D_mqy0u")
 action = "interact"
 
-[node name="Sprite2D" type="Sprite2D" parent="Interact"]
+[node name="Sprite2D" type="Sprite2D" parent="Panel2/Interact"]
 modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(-0.0743155, -1.19209e-07)
 scale = Vector2(1.88227, 2)

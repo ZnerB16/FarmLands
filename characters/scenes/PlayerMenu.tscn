@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://b42ak27nstkuk"]
+[gd_scene load_steps=6 format=3 uid="uid://b42ak27nstkuk"]
 
 [ext_resource type="Texture2D" uid="uid://gb2spkr7fydt" path="res://assets/UI/Sprout Lands - UI Pack - Basic pack/Sprite sheets/UI Big Play Button.png" id="1_rmiba"]
 [ext_resource type="Texture2D" uid="uid://bvm8ukynkkybu" path="res://assets/Characters/Tools.png" id="2_fg7mu"]
 [ext_resource type="Texture2D" uid="uid://b53ka2u3ggxwu" path="res://assets/Characters/tool_water.png" id="3_7aqsr"]
+[ext_resource type="Texture2D" uid="uid://cvphfdh0vxhbk" path="res://assets/UI/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Icons/All Icons.png" id="4_yb0y7"]
+[ext_resource type="Texture2D" uid="uid://cnrq8vnnvuucr" path="res://assets/UI/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Icons/white icons.png" id="5_yfxrh"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 
@@ -67,16 +69,34 @@ scale = Vector2(0.835937, 0.968752)
 texture = ExtResource("3_7aqsr")
 metadata/_edit_lock_ = true
 
-[node name="Button4" type="Button" parent="NinePatchRect"]
+[node name="AddObject" type="Button" parent="NinePatchRect"]
 layout_mode = 0
 offset_left = 64.0
 offset_top = 2.0
 offset_right = 78.0
 offset_bottom = 15.0
 
-[node name="Button5" type="Button" parent="NinePatchRect"]
+[node name="House" type="Sprite2D" parent="NinePatchRect/AddObject"]
+modulate = Color(1, 1, 1, 0.717647)
+texture_filter = 1
+position = Vector2(7.00001, 6.00001)
+scale = Vector2(0.779017, 0.799005)
+texture = ExtResource("4_yb0y7")
+region_enabled = true
+region_rect = Rect2(130, 35, 12, 11)
+metadata/_edit_lock_ = true
+
+[node name="Inventory" type="Button" parent="NinePatchRect"]
 layout_mode = 0
 offset_left = 83.0
 offset_top = 2.0
 offset_right = 97.0
 offset_bottom = 15.0
+
+[node name="InventorySprite" type="Sprite2D" parent="NinePatchRect/Inventory"]
+modulate = Color(1, 1, 1, 0.619608)
+position = Vector2(7, 6)
+scale = Vector2(0.520834, 0.567709)
+texture = ExtResource("5_yfxrh")
+region_enabled = true
+region_rect = Rect2(2, 34, 12, 12)

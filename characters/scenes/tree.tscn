@@ -11,10 +11,10 @@ shader_parameter/enabled = false
 shader_parameter/tint = Color(1, 1, 1, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5n6v8"]
-size = Vector2(10, 23)
+size = Vector2(10, 18)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_juh4r"]
-size = Vector2(17, 35)
+size = Vector2(22, 34)
 
 [sub_resource type="Animation" id="Animation_u2dqp"]
 length = 0.001
@@ -79,7 +79,7 @@ region_enabled = true
 region_rect = Rect2(16, 0, 32, 32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 11.5)
+position = Vector2(0, 14)
 shape = SubResource("RectangleShape2D_5n6v8")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
@@ -97,7 +97,7 @@ show_percentage = false
 [node name="Tree Hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tree Hitbox"]
-position = Vector2(-0.5, 7.5)
+position = Vector2(0, 11)
 shape = SubResource("RectangleShape2D_juh4r")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

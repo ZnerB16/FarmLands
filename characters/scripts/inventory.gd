@@ -1,32 +1,23 @@
-extends Resource
-class_name Inventory
+extends Control
 
-signal items_changed(indexes)
+const Slot = preload("res://characters/scenes/slot.tscn")
 
-@export var items: Array[Resource]  = [
-	null,
-	null,
-	null,
-	null
-]
+@onready var itemGrid = $TextureRect/ItemGrid
 
-func setItem(itemIndex, item):
-	var previousItem = items[itemIndex]
-	items[itemIndex] = item
-	emit_signal("items_changed", [itemIndex])
-	return previousItem
+func setInventoryData(inventoryData: InventoryData):
+	populateItemGrid(inventoryData)
 
-func swapItems(itemIndex, targetIndex):
-	var targetItem = items[targetIndex]
-	var item = items[itemIndex]
-	items[targetIndex] = item
-	items[itemIndex] = targetItem
-	emit_signal("items_changed", [itemIndex, targetIndex])
+# Populate item grid with Slot scene
+func populateItemGrid(inventoryData: InventoryData):
+	for child in itemGrid.get_children():
+		child.queue_free()
 	
-
-func removeItem(itemIndex, item):
-	var previousItem = items[itemIndex]
-	items[itemIndex] = null
-	emit_signal("items_changed", [itemIndex])
-	return previousItem
+	for slots in inventoryData.slotDatas:
+		var slot = Slot.instantiate()
+		itemGrid.add_child(slot)
+		
+		slot.slotClicked.connect(inventoryData.onSlotClicked)
+		
+		if slots:
+			slot.setSlotData(slots)
 
